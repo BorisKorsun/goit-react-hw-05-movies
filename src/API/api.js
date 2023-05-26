@@ -7,11 +7,24 @@ class API {
     constructor() {
         this.service = axios.create({
             baseURL: BASE_URL,
-            paramas: {
+            params: {
                 api_key: API_KEY,
+                query: null,
             }
         })
-    }
+    };
+
+    async getTrendingMoviesPerDay() {
+        return await this.service.get('3/trending/movie/day');
+    };
+
+    get params() {
+        return this.service.defaults.params
+    };
+
+    set params(value) {
+        this.service.defaults.params = value
+    };
 };
 
 export default API;
