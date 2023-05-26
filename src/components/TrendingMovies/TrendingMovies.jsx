@@ -1,35 +1,42 @@
 import API from "API/api";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
+import ResolvedView from "./StatusView/ResolvedView";
+import RejectedView from "./StatusView/RejectedView";
 
 const service = new API();
 
 export default function Home () {
     const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [status, setStatus] = useState('idle')
+
+    const statusMachine = useRef({
+        IDLE: 'idle',
+        PENDING: 'pending',
+        REJECTED: 'rejected',
+        RESOLVED: 'resolved'
+    });
 
     useEffect(() => {
+        const { PENDING, REJECTED, RESOLVED } = statusMachine.current;
         try {
+            setStatus(PENDING);
             service.getTrendingMoviesPerDay().then(({ data: {results} }) => {
-                console.log(results)
+                setStatus(RESOLVED)
                 setMovies(results)
             });
         } catch (e) {
+            setStatus(REJECTED)
             return setError(new Error(e)) 
         };
-    }, [])
-    return (
-        <>
-        <h3>Trending today</h3>
-        <ul>
-            {movies && movies.map(({ title, id }) => {
-                return (
-                    <li key={id}>
-                        <Link to='/movies/:movieId'>{title}</Link>
-                    </li>
-                )
-            })}
-        </ul>
-        </>
-    )
-}
+    }, []);
+
+    if(status === statusMachine.current.RESOLVED) {
+        return <ResolvedView movies={movies}/>
+    };
+
+    if(status === statusMachine.current.REJECTED) {
+        return <RejectedView error={error}/>
+    }
+};
