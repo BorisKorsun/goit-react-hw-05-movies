@@ -10,6 +10,7 @@ class API {
             params: {
                 api_key: API_KEY,
                 query: null,
+                id: null,
             }
         })
     };
@@ -20,12 +21,22 @@ class API {
 
     async searchMovies(q) {
         this.params.query = q;
-        return await this.service.get('3/search/movie')
+        const response = await this.service.get('3/search/movie')
+        this.resetParams();
+        return response;
+    };
+
+    async getMovieById(id) {
+        this.params.id = id;
+        const response = await this.service.get(`3/movie/${id}`);
+        this.resetParams();
+        return response;
     };
 
     resetParams() {
         this.params.api_key = API_KEY;
         this.params.query = null;
+        this.params.id = null;
     };
 
     get params() {
