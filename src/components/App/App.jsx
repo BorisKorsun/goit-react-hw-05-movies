@@ -9,7 +9,7 @@ import Home from "pages/Home";
 import Movies from "pages/Movies";
 import MovieCard from "pages/MovieCard";
 
-export const App = () => {
+export default function App () {
   return (
     <>
       <Routes>
