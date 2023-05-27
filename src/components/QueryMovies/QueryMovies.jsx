@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import SearchForm from "components/SearchForm";
-import { useSearchParams } from "react-router-dom";
+import SearchMovies from "components/SearchMovies";
 
 export default function QueryMovies() {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    // const queryString = searchParams.get('query') ?? '';
+    const query = searchParams.get('query') ?? '';
 
     const handleSubmit = (query) => {
         const nextParams = query !== "" ? { query } : {};
@@ -15,7 +16,8 @@ export default function QueryMovies() {
 
     return (
         <>
-        <SearchForm onSubmit={handleSubmit}/>
+        <SearchForm onSubmit={handleSubmit} />
+        <SearchMovies query={query} />
         </>
     )
 }

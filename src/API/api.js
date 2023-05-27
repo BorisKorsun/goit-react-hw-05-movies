@@ -18,7 +18,7 @@ class API {
         return await this.service.get('3/trending/movie/day');
     };
 
-    async seatchMovies(q) {
+    async searchMovies(q) {
         this.params.query = q;
         return await this.service.get('3/search/movie')
     };
