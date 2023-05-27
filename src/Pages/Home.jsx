@@ -1,6 +1,6 @@
 import TrendingMovies from 'components/TrendingMovies'
 
-export const Home = () => {
+export default function Home() {
     return(
         <TrendingMovies />
     );

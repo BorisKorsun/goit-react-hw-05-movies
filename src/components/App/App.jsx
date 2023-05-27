@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SharedLayout from "components/SharedLayout";
 import Cast from "components/Cast"
 import Reviews from "components/Reviews";
-import { Home } from "pages/Home";
+import Home from "../../pages/Home";
 import Movies from "pages/Movies";
 import MovieCard from "pages/MovieCard";
 
