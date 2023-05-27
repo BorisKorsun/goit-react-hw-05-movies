@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
+import { CardContainer, Title, Score, SubTitle, Desctiption } from "./MovieDetails.styled";
+
 import API from "API/api";
 
 const service = new API();
@@ -31,20 +33,20 @@ export default function MovieDetails() {
         }
     }, [movieId])
     return(
-    <div>
-        <img src={poster && IMG_URL + poster} alt='poster'/>
+    <CardContainer>
+        <img src={poster ? IMG_URL + poster : 'https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png'} alt={title}/>
         <div>
-            <h3>{`${title}: (${year})`} </h3>
-            <p>User score: {score}</p>
-            <p>Overview</p>
-            <p>{desc}</p>
-            <p>Genres</p>
+            <Title>{`${title}: (${year.slice(0, 4)})`} </Title>
+            <Score>User score: {Math.round(score * 10)}%</Score>
+            <SubTitle>Overview</SubTitle>
+            <Desctiption>{desc}</Desctiption>
+            <SubTitle>Genres</SubTitle>
             <ul>
             {genres.map(({ name, id }) => {
                 return <li key={id}>{name}</li>
             })}
             </ul>
         </div>
-    </div>
+    </CardContainer>
     )
 }
