@@ -8,7 +8,7 @@ export default function ResolvedView({movies}) {
             {movies && movies.map(({ title, id }) => {
                 return (
                     <li key={id}>
-                        <Link to='/movies/:movieId'>{title}</Link>
+                        <Link to={`/movies/${id}`}>{title}</Link>
                     </li>
                 )
             })}

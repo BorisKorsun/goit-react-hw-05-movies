@@ -25,7 +25,7 @@ export default function SearchMovies({ query }) {
     return(
         <ul>
             {movies.map(({ title, id }) => {
-                return <MovieItem key={id} title={title} />
+                return <MovieItem key={id} id={id} title={title} />
             })}
         </ul>
     )
