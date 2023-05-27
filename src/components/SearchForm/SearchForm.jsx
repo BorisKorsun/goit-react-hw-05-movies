@@ -1,12 +1,7 @@
-import { Formik, Form, Field } from "formik";
 import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { FormStyled } from "./SearchForm.styled";
-
-const InititalValues = {
-    movie: '',
-}
 
 export default function SearchForm({ onSubmit }) {
     const [query, setQuery] = useState('');
