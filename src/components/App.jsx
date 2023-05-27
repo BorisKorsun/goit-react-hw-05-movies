@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import SharedLayout from "components/SharedLayout";
 import Home from "pages/Home";
@@ -8,7 +10,6 @@ import MovieCard from "pages/MovieCard";
 export const App = () => {
   return (
     <BrowserRouter basename="/goit-react-hw-05-movies">
-    <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}/>
@@ -16,7 +17,18 @@ export const App = () => {
           <Route path="movies/:movieId" element={<MovieCard />}/>
         </Route>
       </Routes>
-    </div>
+      <ToastContainer 
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </BrowserRouter>
   );
 };

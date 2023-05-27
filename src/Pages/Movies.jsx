@@ -1,5 +1,7 @@
+import QueryMovies from "components/QueryMovies";
+
 export default function Movies () {
     return(
-        <div></div>
+        <QueryMovies />
     );
 };

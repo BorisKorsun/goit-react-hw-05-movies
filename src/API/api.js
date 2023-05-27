@@ -18,6 +18,16 @@ class API {
         return await this.service.get('3/trending/movie/day');
     };
 
+    async seatchMovies(q) {
+        this.params.query = q;
+        return await this.service.get('3/search/movie')
+    };
+
+    resetParams() {
+        this.params.api_key = API_KEY;
+        this.params.query = null;
+    };
+
     get params() {
         return this.service.defaults.params
     };
