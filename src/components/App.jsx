@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import SharedLayout from "components/SharedLayout";
+import Cast from "components/Cast"
 import Home from "pages/Home";
 import Movies from "pages/Movies";
 import MovieCard from "pages/MovieCard";
@@ -15,7 +16,7 @@ export const App = () => {
           <Route index element={<Home />}/>
           <Route path="movies" element={<Movies />}/>
           <Route path="movies/:movieId" element={<MovieCard />}>
-            
+            <Route path="cast" element={<Cast />}/>
           </Route>
         </Route>
       </Routes>

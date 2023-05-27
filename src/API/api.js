@@ -33,6 +33,13 @@ class API {
         return response;
     };
 
+    async getMovieCast(id) {
+        this.params.id = id;
+        const response = await this.service.get(`3/movie/${id}/credits`);
+        this.resetParams();
+        return response;
+    }
+
     resetParams() {
         this.params.api_key = API_KEY;
         this.params.query = null;

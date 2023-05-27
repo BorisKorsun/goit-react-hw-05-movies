@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import { CardContainer, Title, Score, SubTitle, Desctiption } from "./MovieDetails.styled";
 
@@ -33,7 +34,8 @@ export default function MovieDetails() {
         }
     }, [movieId])
     return(
-    <CardContainer>
+        <>
+        <CardContainer>
         <img src={poster ? IMG_URL + poster : 'https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png'} alt={title}/>
         <div>
             <Title>{`${title}: (${year.slice(0, 4)})`} </Title>
@@ -48,5 +50,16 @@ export default function MovieDetails() {
             </ul>
         </div>
     </CardContainer>
+    
+    <section>
+        <h4>Additional inforamtion</h4>
+        <ul>
+            <li><Link to="cast">Cast</Link></li>
+            <li><Link>Reviews</Link></li>
+        </ul>
+
+        <Outlet />
+    </section>
+    </>
     )
 }
