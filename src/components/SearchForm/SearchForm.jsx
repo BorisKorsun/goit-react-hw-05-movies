@@ -15,7 +15,7 @@ export default function SearchForm({ onSubmit }) {
         e.preventDefault();
 
         if (query.trim() === '') {
-            toast.warn("ты пидарас", {
+            toast.warn("The field is empty", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
