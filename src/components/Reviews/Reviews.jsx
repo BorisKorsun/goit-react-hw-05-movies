@@ -5,7 +5,6 @@ import { Author } from "./Reviews.styled";
 import API from "API/api";
 
 const service = new API();
-const IMG_URL = 'https://image.tmdb.org/t/p/w300';
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
